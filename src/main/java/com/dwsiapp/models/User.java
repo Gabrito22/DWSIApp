@@ -1,7 +1,14 @@
 package com.dwsiapp.models;
 
-public class User {
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "usuario")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable
     private Integer id;
     private String name;
     private String username;
@@ -10,7 +17,10 @@ public class User {
     private String phone;
     private String pwd;
     private String type;
-
+    @OneToMany(mappedBy = "user")
+    private List<Product>products;
+    @OneToMany(mappedBy = "user")
+    private List<Order>orders;
     public User() {
     }
 
@@ -101,5 +111,21 @@ public class User {
                 ", pwd='" + pwd + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

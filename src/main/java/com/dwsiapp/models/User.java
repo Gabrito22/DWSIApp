@@ -5,17 +5,24 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "user",  schema = "ecommerce")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable
     private Integer id;
+
     private String name;
+
     private String username;
+
     private String email;
+
     private String adress;
+
     private String phone;
+
     private String pwd;
+
     private String type;
     @OneToMany(mappedBy = "user")
     private List<Product>products;

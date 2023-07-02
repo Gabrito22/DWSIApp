@@ -10,11 +10,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String number;
+
     private Date date;
+
     private double total;
     @ManyToOne
     private User user;
+
     @OneToOne
     private DetalleOrder detalle;
     public Order() {

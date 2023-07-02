@@ -1,5 +1,5 @@
 package com.dwsiapp.models;
-import com.dwsiapp.models.User;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -8,24 +8,30 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String description;
-    private String image; //urc
-    private double price;
-    private int amount;
+    @Column(nullable = true)
+    private String imagen; //urc
+    @Column(nullable = false)
+    private double precio;
+    @Column(nullable = false)
+    private int cantidad;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, String image, double price, int amount, User user) {
+    public Product(Integer id, String name, String description, String imagen, double precio, int cantidad, User user) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.image = image;
-        this.price = price;
-        this.amount = amount;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.cantidad = cantidad;
         this.user = user;
     }
 
@@ -53,28 +59,28 @@ public class Product {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
@@ -83,13 +89,14 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", price=" + price +
-                ", amount=" + amount +
+                ", imagen='" + imagen + '\'' +
+                ", precio=" + precio +
+                ", cantidad=" + cantidad +
+                ", user=" + user +
                 '}';
     }
 
-    public User getUser() {
+    public User getUser(User user) {
         return user;
     }
 

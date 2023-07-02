@@ -8,9 +8,13 @@ public class DetalleOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     private double amount;
+
     private double price;
+
     private double total;
     @OneToOne
     private Order order;

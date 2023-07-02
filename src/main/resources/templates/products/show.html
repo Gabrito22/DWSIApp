@@ -51,13 +51,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td ></td>
-        <td ></td>
-        <td ></td>
-        <td ></td>
-        <td><a  class="btn btn-warning" href="">Editar</a> </td>
-        <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
+    <!-- Loop para recoger los products -->
+      <tr th:each="product:${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.cantidad}"></td>
+        <td th:text="${product.precio}"></td>
+        <td><a  class="btn btn-warning" href="">Edit</a> </td>
+        <td><a  class="btn btn-danger" href="">Delete</a> </td>
       </tr>       
     </tbody>
   </table>
